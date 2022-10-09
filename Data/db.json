@@ -1,0 +1,10 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "learning React",
+      "datetime": "October 09,2022 6:06:54 PM",
+      "body": "react is single page application easy to learn "
+    }
+  ]
+}
