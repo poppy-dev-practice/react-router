@@ -23,12 +23,6 @@ const PostPage = () => {
     }
   }
 
-
-
-
-
-
-
   return (
     <main className='PostPage'>
       <article className='post'>
