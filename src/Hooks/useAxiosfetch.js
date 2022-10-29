@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 
 
-const useAxiosFetch = (dataurl)=>{
+const useAxiosFetch = (dataUrl)=>{
     const [data,setData] = useState([])
     const [fetchError,setFetchError]=useState(null)
     const [isloading,setIsLoading]= useState(null)
@@ -28,19 +28,20 @@ const useAxiosFetch = (dataurl)=>{
                 }
            
             }finally{
+                //isMounted && setTimeout(()=>setIsLoading(false),2000);
                 isMounted && setIsLoading(false)
             }
         }
-        fetchData(dataurl)
+        fetchData(dataUrl)
 
         const cleanup = ()=>{
-    
+            //console.log('clean up');
             isMounted = false;
             source.cancel();
         }
 
         return cleanup;
-    },[dataurl])
+    },[dataUrl])
 
     return {data,fetchError,isloading}
 }

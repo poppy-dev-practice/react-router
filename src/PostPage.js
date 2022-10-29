@@ -1,10 +1,34 @@
 import React from 'react'
 import { useParams,Link} from 'react-router-dom'
+import { useContext } from 'react';
+import DataContext from './Context/DataContext';
+import api from './Api/posts';
+import { useNavigate } from 'react-router-dom';
 
 
-const PostPage = ({posts,handleDelete}) => {
+const PostPage = () => {
+  const {posts,setPosts} = useContext(DataContext)
   const { id } = useParams();
   const post = posts.find(post => (post.id).toString() === id)
+  const navigate = useNavigate()
+
+  const handleDelete = async (id) =>{
+    try{
+      await api.delete(`/posts/${id}`)
+    const postslist = posts.filter(post=>post.id !== id)
+    setPosts(postslist)
+    navigate('/')
+    }catch(err){
+      console.log(`Error:${err.message}`);
+    }
+  }
+
+
+
+
+
+
+
   return (
     <main className='PostPage'>
       <article className='post'>
